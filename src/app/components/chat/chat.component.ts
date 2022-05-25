@@ -3,6 +3,8 @@ import {ActivatedRoute} from "@angular/router";
 import {ChatService} from "../../services/chat.service";
 import {Chat, ChatType} from "../../models/Chat";
 import {Message} from "../../models/Message";
+import {UserService} from "../../services/user.service";
+import {User} from "../../models/User";
 
 @Component({
   selector: 'app-chat',
@@ -12,8 +14,9 @@ import {Message} from "../../models/Message";
 export class ChatComponent implements OnInit {
   public chat: Chat | undefined;
   public messageText: string="";
+  public usersToInvite:User[]=[];
 
-  constructor(private activatedRoute:ActivatedRoute,private chatService:ChatService) {
+  constructor(private activatedRoute:ActivatedRoute,private chatService:ChatService,private  userService:UserService) {
 
   }
 
@@ -25,6 +28,7 @@ export class ChatComponent implements OnInit {
         var type = (<any>ChatType)[params.get("chatType")||"ANY"];
         this.chatService.getChat(id, type).subscribe(chat => {
           this.chat=chat;
+          this.getUsersToInvite();
         });
       }
     })
@@ -37,5 +41,17 @@ export class ChatComponent implements OnInit {
       message.sender={username:success}
       this.chat?.messages.push(message);
     },error => alert("error "+JSON.stringify(error)))
+  }
+
+  getUsersToInvite(){
+    return this.userService.getAllExceptMe().subscribe(users=>{
+      var map:Map<string,User> =new Map();
+      if(this.chat?.userList)
+      for(let user of this.chat?.userList){
+       map= map.set(user.username,user);
+      }
+      this.usersToInvite=users.filter(u=>{
+          !map.has(u.username);})
+    })
   }
 }

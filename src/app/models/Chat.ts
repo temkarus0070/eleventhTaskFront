@@ -7,7 +7,8 @@ export interface Chat{
   id:number,
   messages:Message[],
   name?:string,
-  usersCount?:number
+  usersCount?:number,
+  userList?:User[]
 }
 
 export enum ChatType{
