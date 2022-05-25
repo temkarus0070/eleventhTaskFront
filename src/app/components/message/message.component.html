@@ -1,1 +1,4 @@
-<p>message works!</p>
+<div *ngIf="text && user">
+  <h2>{{user.username}}</h2>
+  <pre>{{text}}</pre>
+</div>

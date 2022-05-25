@@ -1,1 +1,14 @@
-<p>chat works!</p>
+<div class="chat-container" *ngIf="chat" >
+  <div>
+<div class="messages" >
+  <app-message *ngFor="let message of chat.messages" [text]="message.content" [user]="message.sender">
+
+  </app-message>
+</div>
+  <textarea [(ngModel)]="messageText" placeholder="message text...">
+
+</textarea>
+    <br>
+  <button  (click)="send()">send</button>
+  </div>
+</div>

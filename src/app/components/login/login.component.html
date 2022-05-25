@@ -1,0 +1,10 @@
+<div>
+
+    <label>login</label>
+    <input [(ngModel)]="login" type="text" />
+    <label>password</label>
+    <input [(ngModel)]="password" type="password" />
+    <input (click)="submitLogin()" type="submit" value="login">
+
+  <p class="jasmine-alert" *ngIf="error!==''">{{error}}</p>
+</div>

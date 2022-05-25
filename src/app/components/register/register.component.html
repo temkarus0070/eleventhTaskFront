@@ -1,0 +1,10 @@
+<div>
+  <form>
+    <label>login</label>
+    <input [(ngModel)]="login" type="text" />
+    <label>password</label>
+    <input [(ngModel)]="password" type="password" />
+    <input (submit)="submitRegister()" type="submit" value="login">
+  </form>
+  <p class="jasmine-alert" *ngIf="error!==''">{{error}}</p>
+</div>

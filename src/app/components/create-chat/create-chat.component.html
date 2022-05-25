@@ -1,0 +1,13 @@
+<div>
+
+<select [(ngModel)]="chat.type">
+  <option selected value="PRIVATE">PRIVATE</option>
+  <option value="GROUP">GROUP</option>
+  <option value="ROOM">ROOM</option>
+</select>
+<input type="text" *ngIf="isNotPrivate()" placeholder="chat name">
+  <input type="text" *ngIf="isGroupChat()" placeholder="MAX users count">
+<button (click)="create()">create</button>
+
+
+</div>

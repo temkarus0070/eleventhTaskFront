@@ -1,4 +1,11 @@
-<p>iiii</p>
-<div *ngFor="let chat of chats">
-  < <h2>{{chat.name?chat.name:chat.type+" chat"+chat.id}}</h2>
+<div class="header">
+  <button *ngIf="!auth" (click)="login()">login</button>
+  <button *ngIf="auth" (click)="createNewChat()">create chat</button>
+  <button *ngIf="auth" (click)="logout()">logout</button>
 </div>
+<div class="main" *ngFor="let chat of chats">
+  <a [routerLink]="['/chat']" [queryParams]="{id: chat.id,chatType:chat.type}">
+    <h2>{{chat.name?chat.name:chat.type+" chat"+chat.id}}</h2>
+  </a>
+</div>
+
