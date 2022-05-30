@@ -39,4 +39,8 @@ chatService.getMyChats().subscribe(chats=>this.chats=chats,(error:HttpErrorRespo
   createNewChat() {
     this.router.navigateByUrl("/chat/create")
   }
+
+  register() {
+    this.router.navigateByUrl("/register")
+  }
 }

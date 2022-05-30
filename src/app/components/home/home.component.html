@@ -1,5 +1,6 @@
 <div class="header">
   <button *ngIf="!auth" (click)="login()">login</button>
+  <button *ngIf="!auth" (click)="register()">register</button>
   <button *ngIf="auth" (click)="createNewChat()">create chat</button>
   <button *ngIf="auth" (click)="logout()">logout</button>
 </div>

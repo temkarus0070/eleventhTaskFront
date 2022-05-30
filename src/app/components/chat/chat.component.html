@@ -9,6 +9,12 @@
 
 </textarea>
     <br>
+
   <button  (click)="send()">send</button>
   </div>
+
+  <select [(ngModel)]="user">
+    <option [value]="user.username" *ngFor="let user of usersToInvite">{{user.username}}</option>
+  </select>
+  <input  value="add user" type="button" (click)="addUser()">
 </div>

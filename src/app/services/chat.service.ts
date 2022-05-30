@@ -13,7 +13,7 @@ export class ChatService {
   constructor(private  httpClient:HttpClient) { }
 
   public getMyChats():Observable<Chat[]>{
-    return this.httpClient.get<Chat[]>(BACKEND+"/api/chat/getAllChatsOfCurrentUser");
+    return this.httpClient.get<Chat[]>(BACKEND+"/api/chat/currentUser");
   }
 
   public sendMessage(message:Message,id:number):Observable<any>{
@@ -21,10 +21,10 @@ export class ChatService {
   }
 
   public createChat(chat:Chat):Observable<number>{
-    return this.httpClient.post<number>(BACKEND+"/api/chat/create",chat,{params:{type:chat.type}});
+    return this.httpClient.post<number>(BACKEND+"/api/chat",chat,{params:{type:chat.type}});
   }
 
   public getChat(id:number, chatType:ChatType):Observable<Chat>{
-    return this.httpClient.get<Chat>(BACKEND+"/api/chat/getChat",{params:{chatId:id,chatType:chatType}});
+    return this.httpClient.get<Chat>(BACKEND+"/api/chat",{params:{chatId:id,chatType:chatType}});
   }
 }

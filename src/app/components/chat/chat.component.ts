@@ -15,6 +15,7 @@ export class ChatComponent implements OnInit {
   public chat: Chat | undefined;
   public messageText: string="";
   public usersToInvite:User[]=[];
+  user: any;
 
   constructor(private activatedRoute:ActivatedRoute,private chatService:ChatService,private  userService:UserService) {
 
@@ -53,5 +54,9 @@ export class ChatComponent implements OnInit {
       this.usersToInvite=users.filter(u=>{
           !map.has(u.username);})
     })
+  }
+
+  addUser() {
+
   }
 }
